@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Container, Image, Icon } from 'semantic-ui-react'
-import icon from '../../components/codettastone-icon.png'
+import { Menu, Container, Icon } from 'semantic-ui-react'
 import * as ROUTES from '../../utilities/routes'
 
 function Navigation() {

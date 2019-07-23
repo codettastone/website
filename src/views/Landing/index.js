@@ -3,8 +3,6 @@ import { Grid, Header, Segment } from 'semantic-ui-react'
 
 const redCathedral =
   'https://images.unsplash.com/photo-1507491910083-29fad9a7778e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2249&q=80'
-const redParking =
-  'https://images.unsplash.com/photo-1494894324626-f9727ea724ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80'
 
 function Landing() {
   return (
