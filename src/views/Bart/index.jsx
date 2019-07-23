@@ -11,7 +11,14 @@ function BartPage() {
 
 function HeroContent() {
   return (
-    <Grid.Row style={{ maxWidth: 450, paddingTop: '2em', paddingBottom: '2em', margin: 0 }}>
+    <Grid.Row
+      style={{
+        maxWidth: 450,
+        paddingTop: '2em',
+        paddingBottom: '2em',
+        margin: 0
+      }}
+    >
       <Grid.Column>
         <Header as="h2" icon color={accent} className="typewriter">
           <Icon name="train" />

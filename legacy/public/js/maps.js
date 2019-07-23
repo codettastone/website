@@ -19,19 +19,25 @@ const markers = [
   }
 ]
 
-function initMarkers (map) {
+function initMarkers(map) {
   markers.forEach(mark => {
     mark.map = map
     let marker = new window.google.maps.Marker(mark) // eslint-disable-line
   })
-};
+}
 
-function initMap () { // eslint-disable-line
+function initMap() {
+  // eslint-disable-line
   fetch('json/mapstyle.json')
     .then(response => response.json())
     .then(styleObj => {
-      let map = new window.google.maps.Map(document.getElementById('map'), options) // eslint-disable-line
-      let styledMapType = new window.google.maps.StyledMapType(styleObj, { name: 'Styled Map' }) // eslint-disable-line
+      const map = new window.google.maps.Map(
+        document.getElementById('map'),
+        options
+      ) // eslint-disable-line
+      const styledMapType = new window.google.maps.StyledMapType(styleObj, {
+        name: 'Styled Map'
+      }) // eslint-disable-line
 
       directionsService = new window.google.maps.DirectionsService() // eslint-disable-line
       directionsDisplay = new window.google.maps.DirectionsRenderer() // eslint-disable-line
@@ -39,8 +45,8 @@ function initMap () { // eslint-disable-line
       map.mapTypes.set('styled_map', styledMapType)
       map.setMapTypeId('styled_map')
       map.setCenter(gMarker)
-      directionsDisplay.setMap(map)// eslint-disable-line
+      directionsDisplay.setMap(map) // eslint-disable-line
       initMarkers(map)
     })
-    .then(() => getAPI())// eslint-disable-line
+    .then(() => getAPI()) // eslint-disable-line
 }

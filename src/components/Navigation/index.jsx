@@ -9,7 +9,7 @@ function Navigation() {
       <Container>
         <Menu.Item>
           <Link to={ROUTES.LANDING}>
-            <Icon name="gem" size="large" />
+            <Icon name="gem outline" flipped="vertically" size="large" />
           </Link>
         </Menu.Item>
         <Menu.Item>
@@ -18,7 +18,11 @@ function Navigation() {
           </Link>
         </Menu.Item>
         <Menu.Item position="right">
-          <a href="//app.codettastone.com" target="_blank" rel="noreferrer noopener">
+          <a
+            href="//app.codettastone.com"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <Icon name="users" size="large" />
           </a>
         </Menu.Item>

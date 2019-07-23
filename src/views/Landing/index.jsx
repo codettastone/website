@@ -13,7 +13,8 @@ function Landing() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
-      }}>
+      }}
+    >
       <Grid.Column textAlign="center">
         <Segment basic inverted style={{ width: '80%', margin: '0 10%' }}>
           <Header as="h1">

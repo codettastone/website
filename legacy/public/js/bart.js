@@ -7,8 +7,8 @@ let directionsService
 let directionsDisplay
 
 function getAPI () { // eslint-disable-line
-  let bartKey = 'MW9S-E7SL-26DU-VV8V'
-  let abbr = 'embr'
+  const bartKey = 'MW9S-E7SL-26DU-VV8V'
+  const abbr = 'embr'
 
   calcRoute()
   fetch(
@@ -19,7 +19,7 @@ function getAPI () { // eslint-disable-line
     .catch(error => console.log(error))
 
   function populateOutput (message) {
-    let headerData = `<h4 class="cover-heading">${message.name} station</h4>`
+    const headerData = `<h4 class="cover-heading">${message.name} station</h4>`
     console.log('item', message.etd)
     message.etd.forEach(city => {
       console.log('city', city)
@@ -30,7 +30,7 @@ function getAPI () { // eslint-disable-line
   };;
 
   function calcRoute () {
-    let request = {
+    const request = {
       // origin: gMarker,
       // destination: markers[ 0 ].position,
       travelMode: 'WALKING'
@@ -52,11 +52,11 @@ function getAPI () { // eslint-disable-line
   ${city.destination} ${city.estimate[ 0 ].direction} bound</li>`
     city.estimate.forEach(time => {
       outputData += '<ul class="list-inline"><li class="list-inline-item">'
-      let etd = time.minutes
+      const etd = time.minutes
       if (etd !== 'Leaving' && etd >= walkTime) {
-        let now = new Date()
-        let departure = new Date(now.getTime() + etd * 60000 + time.delay * 60)
-        let adjustedDeptarture = new Date(departure - walkTime * 60000)
+        const now = new Date()
+        const departure = new Date(now.getTime() + etd * 60000 + time.delay * 60)
+        const adjustedDeptarture = new Date(departure - walkTime * 60000)
         outputData += `${etd} minutes: leave by ${adjustedDeptarture.toLocaleTimeString()}</li></ul>`
       } else if (etd === 'Leaving') {
         outputData += `${etd}</li></ul>`
