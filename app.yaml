@@ -1,14 +1,15 @@
+# [START runtime]
 runtime: nodejs10
 env: standard
 instance_class: F1
+# [END runtime]
+
+# [START handlers]
 handlers:
-  - url: ".*"
-    script: auto
+  - url: /
+    static_files: build/index.html
+    upload: build/index.html
     secure: always
-automatic_scaling:
-  min_idle_instances: 0
-  max_idle_instances: automatic
-  min_pending_latency: automatic
-  max_pending_latency: automatic
-  min_instances: 0
-  max_instances: 2
+  - url: /
+    static_dir: build
+  # [END handlers]
