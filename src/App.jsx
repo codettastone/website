@@ -17,8 +17,7 @@ function App() {
           height: '98vh'
         }}
         textAlign="center"
-        verticalAlign="middle"
-      >
+        verticalAlign="middle">
         <Route exact path={ROUTES.LANDING} component={LandingPage} />
         <Route exact path={ROUTES.BART} component={BartPage} />
       </Grid>
