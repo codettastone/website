@@ -18,3 +18,5 @@ deploy:
   local_dir: build
   on:
     branch: master
+  notifications:
+    slack: codettastone:qScIuKQn3aJNCocHf4S8P8G8
