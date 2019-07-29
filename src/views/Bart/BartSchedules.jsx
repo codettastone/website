@@ -8,7 +8,6 @@ function BartSchedules() {
   const bartUrl = `https://api.bart.gov/api/etd.aspx?cmd=etd&orig=${abbr}&key=${bartKey}&json=y`
 
   const [routes, setRoutes] = React.useState([])
-  const [cities, setCities] = React.useState({})
 
   // res = item: { abbreviation, destination, limited, estimate }
   // estimate = { bikeflag, color, hexcolor, delay, direction,
@@ -36,7 +35,7 @@ function BartSchedules() {
         </Grid.Row>
         <Grid.Row>
           <List horizontal>
-            <List.Item>{item.estimate[0].minutes != 'Leaving' && `${item.estimate[0].minutes} minutes`}</List.Item>
+            <List.Item>{item.estimate[0].minutes !== 'Leaving' && `${item.estimate[0].minutes} minutes`}</List.Item>
             <List.Item>{item.estimate[1] && `${item.estimate[1].minutes} minutes`}</List.Item>
             <List.Item>{item.estimate[2] && `${item.estimate[2].minutes} minutes`}</List.Item>
           </List>
