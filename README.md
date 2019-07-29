@@ -6,6 +6,9 @@ the website
 
 React and Semantic UI are used. Routing is done via `react-router-dom` and the Semantic implementation `npm i semantic-ui-react semantic-ui-css`.
 
+# maps component
+https://github.com/fullstackreact/google-maps-react
+
 # Dev dependencies
 
 ## eslint

@@ -6,19 +6,18 @@ let walkTime = 12
 let directionsService
 let directionsDisplay
 
-function getAPI () { // eslint-disable-line
+function getAPI() {
+  // eslint-disable-line
   const bartKey = 'MW9S-E7SL-26DU-VV8V'
   const abbr = 'embr'
 
   calcRoute()
-  fetch(
-    `https://api.bart.gov/api/etd.aspx?key=${bartKey}&cmd=etd&orig=${abbr}&json=y`
-  )
+  fetch(`https://api.bart.gov/api/etd.aspx?key=${bartKey}&cmd=etd&orig=${abbr}&json=y`)
     .then(response => response.json())
-    .then(data => populateOutput(data.root.station[ 0 ]))
+    .then(data => populateOutput(data.root.station[0]))
     .catch(error => console.log(error))
 
-  function populateOutput (message) {
+  function populateOutput(message) {
     const headerData = `<h4 class="cover-heading">${message.name} station</h4>`
     console.log('item', message.etd)
     message.etd.forEach(city => {
@@ -27,9 +26,9 @@ function getAPI () { // eslint-disable-line
       parseArrivalTimes(city)
     })
     topbox.innerHTML = headerData
-  };;
+  }
 
-  function calcRoute () {
+  function calcRoute() {
     const request = {
       // origin: gMarker,
       // destination: markers[ 0 ].position,
@@ -37,7 +36,7 @@ function getAPI () { // eslint-disable-line
     }
     directionsService.route(request, (result, status) => {
       if (status === 'OK') {
-        walkTime = result.routes[ 0 ].legs[ 0 ].duration.value / 60
+        walkTime = result.routes[0].legs[0].duration.value / 60
         directionsDisplay.setDirections(result)
       } else {
         console.log('Error', status)
@@ -45,11 +44,11 @@ function getAPI () { // eslint-disable-line
     })
   }
 
-  function parseArrivalTimes (city) {
+  function parseArrivalTimes(city) {
     let outputData = '<ul class="list-inline">'
     outputData += `<li class="list-inline-item border rounded-pill" style="padding:2px 10pxborder-color:
-  ${city.estimate[ 0 ].hexcolor}!important">
-  ${city.destination} ${city.estimate[ 0 ].direction} bound</li>`
+  ${city.estimate[0].hexcolor}!important">
+  ${city.destination} ${city.estimate[0].direction} bound</li>`
     city.estimate.forEach(time => {
       outputData += '<ul class="list-inline"><li class="list-inline-item">'
       const etd = time.minutes
