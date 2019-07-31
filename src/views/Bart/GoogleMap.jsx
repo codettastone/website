@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
@@ -6,46 +7,49 @@ import styleObj from '../../utilities/googleMapStyle.json'
 const rowStyle = {
   height: '25vh',
   marginTop: '1em',
-  marginBottom: '1em',
   background: 'grey'
 }
 
-const gMarker = { lat: 37.78954, lng: -122.389988 }
-const options = {
-  zoom: 14,
-  disableDefaultUI: true,
-  center: gMarker
-}
-// var markers = [
-//   {
-//     position: { lat: 37.7929, lng: -122.3971 },
-//     address: 'QJV3+56 Financial District, San Francisco, CA',
-//     title: 'Embarcadero Bart'
-//   },
-//   {
-//     position: { lat: 37.7845174, lng: -122.3950765 },
-//     address: '598 Market St, San Francisco, CA 94104',
-//     title: 'Montgomery Bart'
-//   }
-// ]
+const markers = [
+  {
+    position: { lat: 37.7929, lng: -122.3971 },
+    address: 'QJV3+56 Financial District, San Francisco, CA',
+    station: 'Embarcadero',
+    abbr: 'EMBR'
+  },
+  {
+    position: { lat: 37.7845174, lng: -122.3950765 },
+    address: '598 Market St, San Francisco, CA 94104',
+    station: '',
+    abbr: ''
+  }
+]
 
-// var locations = {
-//   origins: [gMarker],
-//   destinations: [markers[0].address, markers[1].address],
-//   travelMode: 'WALKING'
-// }
+// prop values orignate from index.jsx
+function Map({ location }) {
+  const mapOptions = {
+    zoom: 14,
+    disableDefaultUI: true,
+    center: location.gMarker
+  }
 
-// // Runs distance calculation based on 'locations'
-// const service = new window.google.maps.DistanceMatrixService()
-// service.getDistanceMatrix(locations, (response, status) => {
-//   if (status === 'OK') {
-//     markers[0].distance = response.rows[0].elements[0].duration.value
-//     markers[1].distance = response.rows[0].elements[1].duration.value
-//   }
-//   console.log(markers)
-// })
+  // var distanceValues = {
+  //   origins: [location.gMarker],
+  //   destinations: [markers[0].address, markers[1].address],
+  //   travelMode: 'WALKING'
+  // }
 
-function Map({ location, setLocation }) {
+  // // Runs distance calculation based on 'distanceValues'
+  // const service = new window.google.maps.DistanceMatrixService()
+  // service.getDistanceMatrix(distanceValues, (response, status) => {
+  //   if (status === 'OK') {
+  //     location.nearestLocation.distance = response.rows[0].elements[0].duration.value
+  //     location.nearestLocation.minutes = response.rows[0].elements[0].duration.text
+  //     console.log(response)
+  //   }
+  // })
+  // console.log(location)
+
   const infoWindow = new window.google.maps.InfoWindow()
   const styledMapType = new window.google.maps.StyledMapType(styleObj, { name: 'Styled Map' })
   let map
@@ -63,11 +67,11 @@ function Map({ location, setLocation }) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       position => {
-        setLocation({ lat: position.coords.latitude, lng: position.coords.longitude })
-        infoWindow.setPosition(location)
+        location.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
+        infoWindow.setPosition(location.userLocation)
         infoWindow.setContent('Location found.')
         infoWindow.open(map)
-        map.setCenter(location)
+        map.setCenter(location.userLocation)
       },
       () => {
         handleLocationError(true, infoWindow, map.getCenter())
@@ -80,7 +84,7 @@ function Map({ location, setLocation }) {
 
   React.useEffect(() => {
     // eslint-disable-next-line
-    map = new window.google.maps.Map(document.getElementById('map'), options)
+    map = new window.google.maps.Map(document.getElementById('map'), mapOptions)
     map.mapTypes.set('styled_map', styledMapType)
     map.setMapTypeId('styled_map')
   }, [])
@@ -89,8 +93,7 @@ function Map({ location, setLocation }) {
 }
 
 Map.propTypes = {
-  location: PropTypes.object,
-  setLocation: PropTypes.func
+  location: PropTypes.object
 }
 
 export default Map
