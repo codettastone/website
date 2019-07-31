@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid, Header, List, Segment, Transition } from 'semantic-ui-react'
 
-function BartSchedules() {
+function BartSchedules({ location }) {
   const [routes, setRoutes] = React.useState([])
   const [state, setState] = React.useState({ station: 'EMBR', visible: false })
 
@@ -30,6 +30,7 @@ function BartSchedules() {
 
   const departureTimes = routes.map(item => (
     <Grid.Column width={5} textAlign="left" style={{ margin: '.5em', padding: 0 }} key={item.destination}>
+      <Header inverted as="h2" content={`Embarcadero ${location.lon}`} />
       <Transition visible={state.visible} animation="scale" duration={1000}>
         <Segment compact style={segmentStyle}>
           <Header as="h4" color={item.estimate[0].color.toLowerCase()} content={`${item.destination}`} />
@@ -50,8 +51,7 @@ function BartSchedules() {
 }
 
 BartSchedules.propTypes = {
-  routes: PropTypes.object,
-  setRoutes: PropTypes.func
+  location: PropTypes.object
 }
 
 export default BartSchedules

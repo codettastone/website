@@ -31,10 +31,7 @@ function initMap() {
   fetch('json/mapstyle.json')
     .then(response => response.json())
     .then(styleObj => {
-      const map = new window.google.maps.Map(
-        document.getElementById('map'),
-        options
-      ) // eslint-disable-line
+      const map = new window.google.maps.Map(document.getElementById('map'), options) // eslint-disable-line
       const styledMapType = new window.google.maps.StyledMapType(styleObj, {
         name: 'Styled Map'
       }) // eslint-disable-line

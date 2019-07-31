@@ -11,11 +11,13 @@ const gridStyle = {
 }
 
 function BartPage() {
+  const [location, setLocation] = React.useState({})
+
   return (
     <Grid stackable textAlign="center" divided="vertically" style={gridStyle}>
       <HeroContent />
-      <GoogleMap />
-      <BartSchedules />
+      <GoogleMap location={location} setLocation={setLocation} />
+      <BartSchedules location={location} />
     </Grid>
   )
 }
