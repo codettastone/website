@@ -74,11 +74,12 @@ function Map({ location, setLocation }) {
       }
     )
   } else {
-    // Browser doesn't support Geolocation
+    // Browser doesn't support Geolocation// eslint-disable-next-line
     handleLocationError(false, infoWindow, map.getCenter())
   }
 
   React.useEffect(() => {
+    // eslint-disable-next-line
     map = new window.google.maps.Map(document.getElementById('map'), options)
     map.mapTypes.set('styled_map', styledMapType)
     map.setMapTypeId('styled_map')
