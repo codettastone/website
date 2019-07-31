@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Grid } from 'semantic-ui-react'
-import styleObj from './googleMapStyle.json'
+import styleObj from '../../utilities/googleMapStyle.json'
 
 const rowStyle = {
   height: '25vh',
@@ -16,18 +16,18 @@ const options = {
   disableDefaultUI: true,
   center: gMarker
 }
-var markers = [
-  {
-    position: { lat: 37.7929, lng: -122.3971 },
-    address: 'QJV3+56 Financial District, San Francisco, CA',
-    title: 'Embarcadero Bart'
-  },
-  {
-    position: { lat: 37.7845174, lng: -122.3950765 },
-    address: '598 Market St, San Francisco, CA 94104',
-    title: 'Montgomery Bart'
-  }
-]
+// var markers = [
+//   {
+//     position: { lat: 37.7929, lng: -122.3971 },
+//     address: 'QJV3+56 Financial District, San Francisco, CA',
+//     title: 'Embarcadero Bart'
+//   },
+//   {
+//     position: { lat: 37.7845174, lng: -122.3950765 },
+//     address: '598 Market St, San Francisco, CA 94104',
+//     title: 'Montgomery Bart'
+//   }
+// ]
 
 // var locations = {
 //   origins: [gMarker],
