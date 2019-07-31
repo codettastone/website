@@ -33,22 +33,22 @@ function Map({ location }) {
     center: location.gMarker
   }
 
-  // var distanceValues = {
-  //   origins: [location.gMarker],
-  //   destinations: [markers[0].address, markers[1].address],
-  //   travelMode: 'WALKING'
-  // }
+  var distanceValues = {
+    origins: [location.gMarker],
+    destinations: [markers[0].address, markers[1].address],
+    travelMode: 'WALKING'
+  }
 
-  // // Runs distance calculation based on 'distanceValues'
-  // const service = new window.google.maps.DistanceMatrixService()
-  // service.getDistanceMatrix(distanceValues, (response, status) => {
-  //   if (status === 'OK') {
-  //     location.nearestLocation.distance = response.rows[0].elements[0].duration.value
-  //     location.nearestLocation.minutes = response.rows[0].elements[0].duration.text
-  //     console.log(response)
-  //   }
-  // })
-  // console.log(location)
+  // Runs distance calculation based on 'distanceValues'
+  const service = new window.google.maps.DistanceMatrixService()
+  service.getDistanceMatrix(distanceValues, (response, status) => {
+    if (status === 'OK') {
+      location.nearestLocation.distance = response.rows[0].elements[0].duration.value
+      location.nearestLocation.minutes = response.rows[0].elements[0].duration.text
+      console.log(response)
+    }
+  })
+  console.log(location)
 
   const infoWindow = new window.google.maps.InfoWindow()
   const styledMapType = new window.google.maps.StyledMapType(styleObj, { name: 'Styled Map' })
