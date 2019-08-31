@@ -22,6 +22,11 @@ function Navigation() {
             <Icon name="users" size="large" color="teal" />
           </a>
         </Menu.Item>
+        <Menu.Item>
+          <a href="https://codettastone.web.app/" target="_blank" rel="noreferrer noopener">
+            <Icon name="users" size="large" color="pink" />
+          </a>
+        </Menu.Item>
       </Container>
     </Menu>
   )
