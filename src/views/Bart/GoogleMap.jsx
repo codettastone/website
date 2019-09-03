@@ -45,10 +45,8 @@ function Map({ location }) {
     if (status === 'OK') {
       location.nearestLocation.distance = response.rows[0].elements[0].duration.value
       location.nearestLocation.minutes = response.rows[0].elements[0].duration.text
-      console.log(response)
     }
   })
-  console.log(location)
 
   const infoWindow = new window.google.maps.InfoWindow()
   const styledMapType = new window.google.maps.StyledMapType(styleObj, { name: 'Styled Map' })
@@ -63,23 +61,25 @@ function Map({ location }) {
     )
     infoWindow.open(map)
   }
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        location.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
-        infoWindow.setPosition(location.userLocation)
-        infoWindow.setContent('Location found.')
-        infoWindow.open(map)
-        map.setCenter(location.userLocation)
-      },
-      () => {
-        handleLocationError(true, infoWindow, map.getCenter())
-      }
-    )
-  } else {
-    // Browser doesn't support Geolocation// eslint-disable-next-line
-    handleLocationError(false, infoWindow, map.getCenter())
+  if (map) {
+    if (navigator.geolocation) {
+      console.log('map', map)
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          location.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
+          infoWindow.setPosition(location.userLocation)
+          infoWindow.setContent('Location found.')
+          infoWindow.open(map)
+          map.setCenter(location.userLocation)
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter())
+        }
+      )
+    } else {
+      // Browser doesn't support Geolocation// eslint-disable-next-line
+      handleLocationError(false, infoWindow, map.getCenter())
+    }
   }
 
   React.useEffect(() => {

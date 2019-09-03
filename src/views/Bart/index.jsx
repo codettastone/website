@@ -5,9 +5,15 @@ import GoogleMap from './GoogleMap'
 import HeroContent from './HeroContent'
 
 import './styles.css'
+import background from '../../images/neonTrain.jpeg'
 
 const gridStyle = {
-  marginTop: '1em'
+  marginTop: '1em',
+  backgroundImage: `url(${background})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed'
 }
 const labelStyle = { paddingLeft: '3em', background: 'rgba(0,0,0)', color: 'white', textAlign: 'center' }
 
