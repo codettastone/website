@@ -26,7 +26,7 @@ function BartPage() {
       address: '',
       station: 'Embarcadero',
       abbr: 'EMBR',
-      distance: 666,
+      distance: 11,
       minutes: '11 minutes'
     }
   })

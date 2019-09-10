@@ -5,7 +5,8 @@ const rowStyle = {
   maxWidth: 450,
   marginTop: '2em',
   background: 'rgba(0,0,0,0.7)',
-  border: 'solid 2px rgba(0,0,0,0.2)'
+  border: 'solid 2px rgba(0,0,0,0.2)',
+  paddingTop: '2em'
 }
 
 function HeroContent() {
@@ -17,7 +18,8 @@ function HeroContent() {
           <Header.Content style={{ maxWidth: '130px' }} as="h1">
             Bart App
           </Header.Content>
-          <Header.Subheader>Calculates train ETA based on location & walking speed</Header.Subheader>
+          <Header.Subheader>Calculates train ETA based on your location & walking speed</Header.Subheader>
+          <Header.Subheader>Leave your location within the given amount of time.</Header.Subheader>
         </Header>
       </Grid.Column>
     </Grid.Row>

@@ -36,10 +36,16 @@ function BartSchedules({ location }) {
             <List.Item>
               {item.estimate[0].minutes !== 'Leaving' &&
                 item.estimate[0].minutes - location.nearestLocation.distance > 0 &&
-                `${item.estimate[0].minutes - location.nearestLocation.distance} minutes`}
+                `${item.estimate[0].minutes - location.nearestLocation.distance} minute(s)`}
             </List.Item>
-            <List.Item>{item.estimate[1] && `${item.estimate[1].minutes} minutes`}</List.Item>
-            <List.Item>{item.estimate[2] && `${item.estimate[2].minutes} minutes`}</List.Item>
+            <List.Item>
+              {item.estimate[1] &&
+                item.estimate[1].minutes - location.nearestLocation.distance > 0 &&
+                `${item.estimate[1].minutes - location.nearestLocation.distance} minutes`}
+            </List.Item>
+            <List.Item>
+              {item.estimate[2] && `${item.estimate[2].minutes - location.nearestLocation.distance} minutes`}
+            </List.Item>
           </List>
         </Segment>
       </Transition>
