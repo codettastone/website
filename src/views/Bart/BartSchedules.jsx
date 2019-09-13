@@ -44,7 +44,9 @@ function BartSchedules({ location }) {
                 `${item.estimate[1].minutes - location.nearestLocation.distance} minutes`}
             </List.Item>
             <List.Item>
-              {item.estimate[2] && `${item.estimate[2].minutes - location.nearestLocation.distance} minutes`}
+              {item.estimate[2] &&
+                item.estimate[2].minutes - location.nearestLocation.distance > 0 &&
+                `${item.estimate[2].minutes - location.nearestLocation.distance} minutes`}
             </List.Item>
           </List>
         </Segment>
