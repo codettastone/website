@@ -28,25 +28,38 @@ function BartSchedules({ location }) {
   }
 
   const departureTimes = routes.map(item => (
-    <Grid.Column width={5} textAlign="left" style={{ margin: '.5em', padding: 0 }} key={item.destination}>
+    <Grid.Column
+      width={5}
+      textAlign="left"
+      style={{ margin: '.5em', padding: 0 }}
+      key={item.destination}>
       <Transition visible={state.visible} animation="scale" duration={1000}>
-        <Segment compact style={segmentStyle} color={item.estimate[0].color.toLowerCase()}>
+        <Segment
+          compact
+          style={segmentStyle}
+          color={item.estimate[0].color.toLowerCase()}>
           <Header as="h4" inverted content={`${item.destination}`} />
           <List horizontal>
             <List.Item>
               {item.estimate[0].minutes !== 'Leaving' &&
-                item.estimate[0].minutes - location.nearestLocation.distance > 0 &&
-                `${item.estimate[0].minutes - location.nearestLocation.distance} minute(s)`}
+                item.estimate[0].minutes - location.nearestLocation.distance >
+                  0 &&
+                `${item.estimate[0].minutes -
+                  location.nearestLocation.distance} minute(s)`}
             </List.Item>
             <List.Item>
               {item.estimate[1] &&
-                item.estimate[1].minutes - location.nearestLocation.distance > 0 &&
-                `${item.estimate[1].minutes - location.nearestLocation.distance} minutes`}
+                item.estimate[1].minutes - location.nearestLocation.distance >
+                  0 &&
+                `${item.estimate[1].minutes -
+                  location.nearestLocation.distance} minutes`}
             </List.Item>
             <List.Item>
               {item.estimate[2] &&
-                item.estimate[2].minutes - location.nearestLocation.distance > 0 &&
-                `${item.estimate[2].minutes - location.nearestLocation.distance} minutes`}
+                item.estimate[2].minutes - location.nearestLocation.distance >
+                  0 &&
+                `${item.estimate[2].minutes -
+                  location.nearestLocation.distance} minutes`}
             </List.Item>
           </List>
         </Segment>

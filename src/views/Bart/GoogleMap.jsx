@@ -43,13 +43,17 @@ function Map({ location }) {
   const service = new window.google.maps.DistanceMatrixService()
   service.getDistanceMatrix(distanceValues, (response, status) => {
     if (status === 'OK') {
-      location.nearestLocation.distance = response.rows[0].elements[0].duration.value
-      location.nearestLocation.minutes = response.rows[0].elements[0].duration.text
+      location.nearestLocation.distance =
+        response.rows[0].elements[0].duration.value
+      location.nearestLocation.minutes =
+        response.rows[0].elements[0].duration.text
     }
   })
 
   const infoWindow = new window.google.maps.InfoWindow()
-  const styledMapType = new window.google.maps.StyledMapType(styleObj, { name: 'Styled Map' })
+  const styledMapType = new window.google.maps.StyledMapType(styleObj, {
+    name: 'Styled Map'
+  })
   let map
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -66,7 +70,10 @@ function Map({ location }) {
       console.log('map', map)
       navigator.geolocation.getCurrentPosition(
         position => {
-          location.userLocation = { lat: position.coords.latitude, lng: position.coords.longitude }
+          location.userLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
           infoWindow.setPosition(location.userLocation)
           infoWindow.setContent('Location found.')
           infoWindow.open(map)

@@ -18,8 +18,12 @@ function HeroContent() {
           <Header.Content style={{ maxWidth: '130px' }} as="h1">
             Bart App
           </Header.Content>
-          <Header.Subheader>Calculates train ETA based on your location & walking speed</Header.Subheader>
-          <Header.Subheader>Leave your location within the given amount of time.</Header.Subheader>
+          <Header.Subheader>
+            Calculates train ETA based on your location & walking speed
+          </Header.Subheader>
+          <Header.Subheader>
+            Leave your location within the given amount of time.
+          </Header.Subheader>
         </Header>
       </Grid.Column>
     </Grid.Row>

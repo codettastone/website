@@ -15,7 +15,12 @@ const gridStyle = {
   backgroundRepeat: 'no-repeat',
   backgroundAttachment: 'fixed'
 }
-const labelStyle = { paddingLeft: '3em', background: 'rgba(0,0,0)', color: 'white', textAlign: 'center' }
+const labelStyle = {
+  paddingLeft: '3em',
+  background: 'rgba(0,0,0)',
+  color: 'white',
+  textAlign: 'center'
+}
 
 function BartPage() {
   const [location, setLocation] = React.useState({
