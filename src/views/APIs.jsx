@@ -15,8 +15,8 @@ function KanyeRest() {
 
   // * HTTP requests
   function pullWeather() {
-    let lat = `37.8267`
-    let lon = `-122.4233`
+    let lat = `37.663200`
+    let lon = `-121.865887`
     let key = `566e89d9efc24baf7e686646e289bb00`
     let url = `https://api.darksky.net/forecast/${key}/${lat},${lon}`
 
@@ -27,11 +27,14 @@ function KanyeRest() {
   }
 
   function pullKanye() {
-    fetch('https://api.kanye.rest')
+    let url = `https://api.kanye.rest`
+    fetch(`${url}`)
       .then(res => res.json())
       .then(data => setKanye(data.quote))
       .catch(err => console.error(err))
   }
+
+  weather && console.log(weather)
 
   return (
     <Container text>
@@ -44,7 +47,15 @@ function KanyeRest() {
           <Button onClick={pullKanye}>Yeezy me!</Button>
         </Grid.Row>
         <Grid.Row style={{ height: '2em' }}>
-          {weather ? weather : 'Click the button for some Weather'}
+          {weather
+            ? `Currently: ${new Date(weather.currently.time).toLocaleString(
+                [],
+                {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                }
+              )} ${weather.currently.apparentTemperature} °F`
+            : 'Click the button for some Weather'}
         </Grid.Row>
         <br />
         <Grid.Row>
