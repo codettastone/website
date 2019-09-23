@@ -48,13 +48,14 @@ function KanyeRest() {
         </Grid.Row>
         <Grid.Row style={{ height: '2em' }}>
           {weather
-            ? `Currently: ${new Date(weather.currently.time).toLocaleString(
-                [],
-                {
-                  hour: '2-digit',
-                  minute: '2-digit'
-                }
-              )} ${weather.currently.apparentTemperature} °F`
+            ? `Currently: ${Math.round(
+                weather.currently.apparentTemperature
+              )} (°F) at ${new Date(
+                weather.currently.time * 1000
+              ).toLocaleString([], {
+                hour: '2-digit',
+                minute: '2-digit'
+              })}`
             : 'Click the button for some Weather'}
         </Grid.Row>
         <br />

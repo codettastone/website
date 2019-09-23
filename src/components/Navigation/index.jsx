@@ -18,12 +18,23 @@ function Navigation() {
           </Link>
         </Menu.Item>
         <Menu.Item>
-          <a href="//app.codettastone.com" target="_blank" rel="noreferrer noopener">
+          <Link to={ROUTES.APIS}>
+            <Icon name="cloud" size="large" color="blue" />
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <a
+            href="//app.codettastone.com"
+            target="_blank"
+            rel="noreferrer noopener">
             <Icon name="users" size="large" color="teal" />
           </a>
         </Menu.Item>
         <Menu.Item>
-          <a href="https://codettastone.web.app/" target="_blank" rel="noreferrer noopener">
+          <a
+            href="https://codettastone.web.app/"
+            target="_blank"
+            rel="noreferrer noopener">
             <Icon name="users" size="large" color="pink" />
           </a>
         </Menu.Item>
