@@ -15,12 +15,12 @@ function KanyeRest() {
 
   // * HTTP requests
   function pullWeather() {
-    let lat = 37.8267
-    let lon = -122.4233
+    let lat = `37.8267`
+    let lon = `-122.4233`
     let key = `566e89d9efc24baf7e686646e289bb00`
     let url = `https://api.darksky.net/forecast/${key}/${lat},${lon}`
 
-    fetch(`${url}${key}`)
+    fetch(`${url}`)
       .then(res => res.json())
       .then(data => setWeather(data))
       .catch(err => console.log(err))
