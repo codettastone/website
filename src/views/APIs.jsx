@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react'
+import axios from 'axios'
 import { Grid, Container, Button } from 'semantic-ui-react'
 
 const container = {
@@ -9,45 +10,53 @@ const container = {
   padding: 10
 }
 
+const apiProxy =
+  'https://us-central1-codettastone.cloudfunctions.net/api/weather'
+
 function KanyeRest() {
-  const [kanye, setKanye] = useState()
-  const [weather, setWeather] = useState()
+  const [kanye, setKanye] = useState(null)
+  const [weather, setWeather] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   // * HTTP requests
   function pullWeather() {
-    let lat = `37.663200`
-    let lon = `-121.865887`
-    let key = `566e89d9efc24baf7e686646e289bb00`
-    let url = `https://api.darksky.net/forecast/${key}/${lat},${lon}`
-
-    fetch(`${url}`)
-      .then(res => res.json())
-      .then(data => setWeather(data))
-      .catch(err => console.log(err))
+    // Pleasanton
+    const location = { lat: 37.6632, lon: -121.865887 }
+    setLoading(true)
+    axios
+      .post(`${apiProxy}`, location)
+      .then(res => {
+        setLoading(false)
+        setWeather(res.data)
+      })
+      .catch(err => console.log(err, 'weather'))
   }
 
   function pullKanye() {
     let url = `https://api.kanye.rest`
-    fetch(`${url}`)
-      .then(res => res.json())
-      .then(data => setKanye(data.quote))
+    setLoading(true)
+    axios
+      .get(`${url}`)
+      .then(res => res.data)
+      .then(data => {
+        setLoading(false)
+        setKanye(data.quote)
+      })
       .catch(err => console.error(err))
   }
-
-  weather && console.log(weather)
 
   return (
     <Container text>
       <Grid.Column>
         <Grid.Row style={{ height: '2em' }}>
-          {kanye ? kanye : 'Click the button for some KaaS'}
+          {kanye && !loading ? kanye : 'Click the button for some KaaS'}
         </Grid.Row>
         <br />
         <Grid.Row>
           <Button onClick={pullKanye}>Yeezy me!</Button>
         </Grid.Row>
         <Grid.Row style={{ height: '2em' }}>
-          {weather
+          {weather && !loading
             ? `Currently: ${Math.round(
                 weather.currently.apparentTemperature
               )} (°F) at ${new Date(
@@ -60,7 +69,9 @@ function KanyeRest() {
         </Grid.Row>
         <br />
         <Grid.Row>
-          <Button onClick={pullWeather}>Weather me!</Button>
+          <Button onClick={pullWeather}>
+            {loading ? 'Loading...' : 'Weather me!'}
+          </Button>
         </Grid.Row>
       </Grid.Column>
     </Container>
